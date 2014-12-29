@@ -51,12 +51,11 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
         return true
     }
     
-//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        if (editingStyle == UITableViewCellEditingStyle.Delete) {
-//            var events = Event.MR_findAll() as [Event]
-//            events.removeAtIndex(indexPath.row).deleteEntity()
-//            NSManagedObjectContext.defaultContext().saveToPersistentStoreAndWait()
-//            tableView.reloadData()
-//        }
-//    }
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            var events = Event.MR_findAll() as [Event]
+            events[indexPath.row].MR_deleteEntity()
+            tableView.reloadData()
+        }
+    }
 }
