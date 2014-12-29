@@ -36,17 +36,25 @@ class EventViewController: UITableViewController, UIPopoverPresentationControlle
         }
         presentViewController(popoverVC, animated: true, completion: nil)
     }
+    
+    @IBAction func datePickerButton(sender: UIButton) {
+        let popoverVC = storyboard?.instantiateViewControllerWithIdentifier("datePickerPopover") as DatePickerViewController
+        popoverVC.modalPresentationStyle = .Popover
+        popoverVC.preferredContentSize = CGSizeMake(320, 162)
+        if let popoverController = popoverVC.popoverPresentationController {
+            popoverController.sourceView = sender
+            popoverController.sourceRect = CGRect(x: 0, y: 0, width: 320, height: 162)
+            popoverController.permittedArrowDirections = .Any
+            popoverController.delegate = self
+            popoverVC.delegate = self
+        }
+        presentViewController(popoverVC, animated: true, completion: nil)
+    }
 
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController!) -> UIModalPresentationStyle {
         return .None
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "pickDate") {
-            let dateVC = segue.destinationViewController as DatePickerViewController
-            dateVC.delegate = self
-        }
-    }
 
     override func viewWillAppear(animated: Bool) {
         if let initEvent = event {
@@ -63,11 +71,13 @@ class EventViewController: UITableViewController, UIPopoverPresentationControlle
     }
     @IBAction func saveButtonPressed(sender: AnyObject) {
         if let initEvent = event {
+            MagicalRecord.saveWithBlockAndWait { (context) -> Void in
             initEvent.title = self.titleTextField.text
             initEvent.description = self.descriptionTextField.text
             initEvent.date = self.date
             initEvent.priority = self.priorityMetr.selectedSegmentIndex
             initEvent.color = self.color
+            }
         } else {
             MagicalRecord.saveWithBlockAndWait { (context) -> Void in
                 let event = Event.MR_createInContext(context) as Event

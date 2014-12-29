@@ -46,4 +46,17 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
         cell.colorView.backgroundColor = colors[tmp.color]
         return cell
     }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+//            var events = Event.MR_findAll() as [Event]
+//            events.removeAtIndex(indexPath.row).deleteEntity()
+//            NSManagedObjectContext.defaultContext().saveToPersistentStoreAndWait()
+//            tableView.reloadData()
+//        }
+//    }
 }
