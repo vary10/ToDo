@@ -1,0 +1,21 @@
+//
+//  Event.h
+//  ToDo
+//
+//  Created by Valery Girkin on 21.01.15.
+//  Copyright (c) 2015 Valery Girkin. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+
+
+@interface Event : NSManagedObject
+
+@property (nonatomic, retain) NSString * color;
+@property (nonatomic, retain) NSString * date;
+@property (nonatomic, retain) NSString * descrition;
+@property (nonatomic, retain) NSNumber * priority;
+@property (nonatomic, retain) NSString * title;
+
+@end

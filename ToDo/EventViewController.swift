@@ -7,20 +7,22 @@
 //
 
 import UIKit
+import CoreData
 
-class EventViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
 
+class EventViewController: UITableViewController, UIPopoverPresentationControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
+    
     var colors: [String: UIColor] = ["Blue": UIColor(red: 87.0/255, green: 228.0/255, blue: 255.0/255, alpha: 1.0), "Green": UIColor(red: 60.0/255, green: 232.0/255, blue: 116.0/255, alpha: 1.0), "Yellow": UIColor(red: 240.0/255, green: 250.0/255, blue: 70.0/255, alpha: 1.0), "Orange": UIColor(red: 243.0/255, green: 150.0/255, blue: 52.0/255, alpha: 1.0), "Red": UIColor(red: 250.0/255, green: 102.0/255, blue: 70.0/255, alpha: 1.0), "Purple": UIColor(red: 166.0/255, green: 90.0/255, blue: 242.0/255, alpha: 1.0)]
 
     var delegate: RootViewController?
-    var color: String = ""
+    var color: String = "Red"
     var date = ""
     var event: Event?
 
+    @IBOutlet weak var descriptionTextField: UITextView!
     @IBOutlet weak var colorButton: UIButton!
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var priorityMetr: UISegmentedControl!
     
     @IBAction func colorPickerButton(sender: UIButton) {
@@ -57,10 +59,12 @@ class EventViewController: UITableViewController, UIPopoverPresentationControlle
 
 
     override func viewWillAppear(animated: Bool) {
+        titleTextField.delegate = self
+        descriptionTextField.delegate = self
         if let initEvent = event {
             colorButton.backgroundColor = colors[initEvent.color]
             titleTextField.text = initEvent.title
-            descriptionTextField.text = initEvent.description
+            descriptionTextField.text = initEvent.descrition
             priorityMetr.selectedSegmentIndex = initEvent.priority.integerValue
             dateButton.setTitle(initEvent.date, forState: UIControlState.Normal)
         } else {
@@ -69,24 +73,30 @@ class EventViewController: UITableViewController, UIPopoverPresentationControlle
             dateButton.setTitle("Choose", forState: UIControlState.Normal)
         }
     }
+    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        textField.resignFirstResponder()
+        return true;
+    }
+    
+    
+
     @IBAction func saveButtonPressed(sender: AnyObject) {
         if let initEvent = event {
-            MagicalRecord.saveWithBlockAndWait { (context) -> Void in
             initEvent.title = self.titleTextField.text
-            initEvent.description = self.descriptionTextField.text
+            initEvent.descrition = self.descriptionTextField.text
             initEvent.date = self.date
             initEvent.priority = self.priorityMetr.selectedSegmentIndex
             initEvent.color = self.color
-            }
+            NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
         } else {
-            MagicalRecord.saveWithBlockAndWait { (context) -> Void in
-                let event = Event.MR_createInContext(context) as Event
-                event.title = self.titleTextField.text
-                event.description = self.descriptionTextField.text
-                event.date = self.date
-                event.priority = self.priorityMetr.selectedSegmentIndex
-                event.color = self.color
-            }
+            let event = Event.MR_createEntity() as Event
+            event.title = self.titleTextField.text
+            event.descrition = self.descriptionTextField.text
+            event.date = self.date
+            event.priority = self.priorityMetr.selectedSegmentIndex
+            event.color = self.color
+            NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
         }
     }
 }

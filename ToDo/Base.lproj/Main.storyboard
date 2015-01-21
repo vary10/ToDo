@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Dun-Eq-tEh">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventTableCell" id="LjZ-0I-1jk" customClass="TableViewCell" customModule="ToDo" customModuleProvider="target">
@@ -45,7 +45,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ZQ-TB-5hZ">
-                                                    <rect key="frame" x="45.5" y="8" width="42" height="27.5"/>
+                                                    <rect key="frame" x="45" y="8" width="42" height="27.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -85,8 +85,14 @@
                             <constraint firstItem="3tJ-bp-jr4" firstAttribute="top" secondItem="Dun-Eq-tEh" secondAttribute="bottom" id="2ja-kW-A8J"/>
                             <constraint firstItem="Dun-Eq-tEh" firstAttribute="top" secondItem="2M9-mR-Vqk" secondAttribute="bottom" id="6z3-Op-Oos"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Dun-Eq-tEh" secondAttribute="trailing" constant="-16" id="9Vg-Ij-WFB"/>
+                            <constraint firstItem="Dun-Eq-tEh" firstAttribute="top" secondItem="gA4-SN-jPe" secondAttribute="topMargin" id="JAH-O9-Afd"/>
                             <constraint firstItem="Dun-Eq-tEh" firstAttribute="leading" secondItem="gA4-SN-jPe" secondAttribute="leadingMargin" constant="-16" id="YJp-Db-qLR"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="6z3-Op-Oos"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="b5D-Wj-p5Q">
                         <barButtonItem key="rightBarButtonItem" id="ht6-Gb-WGK">
@@ -109,9 +115,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eB6-0Z-2OZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18" y="176"/>
+            <point key="canvasLocation" x="52" y="176"/>
         </scene>
-        <!--Event View Controller-->
+        <!--Editing-->
         <scene sceneID="G9Y-Nn-eEV">
             <objects>
                 <tableViewController id="aSV-ty-mz5" customClass="EventViewController" customModule="ToDo" customModuleProvider="target" sceneMemberID="viewController">
@@ -141,22 +147,23 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="103" id="5Ft-CQ-wKz">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="132" id="5Ft-CQ-wKz">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Ft-CQ-wKz" id="6ee-X0-o3F">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AIZ-id-44d">
-                                                    <rect key="frame" x="8" y="8" width="304" height="86.5"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a6b-As-BFf">
+                                                    <rect key="frame" x="8" y="8" width="304" height="115.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="AIZ-id-44d" secondAttribute="bottom" id="AA2-mz-1R4"/>
-                                                <constraint firstItem="AIZ-id-44d" firstAttribute="top" secondItem="6ee-X0-o3F" secondAttribute="topMargin" id="GRB-QD-kZL"/>
-                                                <constraint firstItem="AIZ-id-44d" firstAttribute="leading" secondItem="6ee-X0-o3F" secondAttribute="leadingMargin" id="R9G-9i-mmC"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="AIZ-id-44d" secondAttribute="trailing" id="ylO-6z-7HS"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="a6b-As-BFf" secondAttribute="trailing" id="I6b-YW-gzt"/>
+                                                <constraint firstItem="a6b-As-BFf" firstAttribute="leading" secondItem="6ee-X0-o3F" secondAttribute="leadingMargin" id="a5w-ON-uxp"/>
+                                                <constraint firstItem="a6b-As-BFf" firstAttribute="top" secondItem="6ee-X0-o3F" secondAttribute="topMargin" id="k7A-Lg-bOR"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="a6b-As-BFf" secondAttribute="bottom" id="pr1-dt-8WA"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -320,18 +327,23 @@
                             <outlet property="delegate" destination="aSV-ty-mz5" id="uUz-7X-uOt"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Editing" id="M6S-dX-wVl">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="ye8-fe-AVy"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="colorButton" destination="7aU-Nz-igP" id="7eu-Uo-t83"/>
                         <outlet property="dateButton" destination="ciZ-lP-qQS" id="VVB-Y8-IZc"/>
-                        <outlet property="descriptionTextField" destination="AIZ-id-44d" id="dxb-6m-kdX"/>
+                        <outlet property="descriptionTextField" destination="a6b-As-BFf" id="BAs-6Z-hBH"/>
                         <outlet property="priorityMetr" destination="hI2-kD-v8V" id="0HL-qz-HkB"/>
                         <outlet property="titleTextField" destination="0QX-9y-VYB" id="Tje-3P-wcA"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tYa-C7-EGJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="470" y="176"/>
+            <point key="canvasLocation" x="470" y="175"/>
         </scene>
         <!--Date Picker View Controller-->
         <scene sceneID="tzc-2u-Ky7">
@@ -477,6 +489,6 @@
         <image name="colors.png" width="344" height="222"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZyU-qz-ZVu"/>
+        <segue reference="Dp6-0e-nGd"/>
     </inferredMetricsTieBreakers>
 </document>
