@@ -2,7 +2,7 @@
 //  Event.m
 //  ToDo
 //
-//  Created by Valery Girkin on 21.01.15.
+//  Created by Valery Girkin on 22.01.15.
 //  Copyright (c) 2015 Valery Girkin. All rights reserved.
 //
 
@@ -16,5 +16,7 @@
 @dynamic descrition;
 @dynamic priority;
 @dynamic title;
+@dynamic planned;
+@dynamic createdAt;
 
 @end

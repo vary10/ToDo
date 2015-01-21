@@ -14,11 +14,14 @@ class EventViewController: UITableViewController, UIPopoverPresentationControlle
     
     var colors: [String: UIColor] = ["Blue": UIColor(red: 87.0/255, green: 228.0/255, blue: 255.0/255, alpha: 1.0), "Green": UIColor(red: 60.0/255, green: 232.0/255, blue: 116.0/255, alpha: 1.0), "Yellow": UIColor(red: 240.0/255, green: 250.0/255, blue: 70.0/255, alpha: 1.0), "Orange": UIColor(red: 243.0/255, green: 150.0/255, blue: 52.0/255, alpha: 1.0), "Red": UIColor(red: 250.0/255, green: 102.0/255, blue: 70.0/255, alpha: 1.0), "Purple": UIColor(red: 166.0/255, green: 90.0/255, blue: 242.0/255, alpha: 1.0)]
 
+    let formatter = NSDateFormatter()
     var delegate: RootViewController?
     var color: String = "Red"
-    var date = ""
+    var date: NSDate?
     var event: Event?
 
+    
+    
     @IBOutlet weak var descriptionTextField: UITextView!
     @IBOutlet weak var colorButton: UIButton!
     @IBOutlet weak var dateButton: UIButton!
@@ -58,7 +61,9 @@ class EventViewController: UITableViewController, UIPopoverPresentationControlle
     }
 
 
+
     override func viewWillAppear(animated: Bool) {
+        self.formatter.setLocalizedDateFormatFromTemplate("EEE, MMM d, ''yy")
         titleTextField.delegate = self
         descriptionTextField.delegate = self
         if let initEvent = event {
@@ -66,7 +71,7 @@ class EventViewController: UITableViewController, UIPopoverPresentationControlle
             titleTextField.text = initEvent.title
             descriptionTextField.text = initEvent.descrition
             priorityMetr.selectedSegmentIndex = initEvent.priority.integerValue
-            dateButton.setTitle(initEvent.date, forState: UIControlState.Normal)
+            dateButton.setTitle(self.formatter.stringFromDate(initEvent.date), forState: UIControlState.Normal)
         } else {
             titleTextField.text = ""
             descriptionTextField.text = ""
@@ -85,15 +90,27 @@ class EventViewController: UITableViewController, UIPopoverPresentationControlle
         if let initEvent = event {
             initEvent.title = self.titleTextField.text
             initEvent.descrition = self.descriptionTextField.text
-            initEvent.date = self.date
             initEvent.priority = self.priorityMetr.selectedSegmentIndex
             initEvent.color = self.color
+            if let Date = self.date {
+                initEvent.date = self.date!
+                initEvent.planned = true
+            } else {
+                initEvent.date = NSDate()
+                initEvent.planned = false
+            }
             NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
         } else {
             let event = Event.MR_createEntity() as Event
             event.title = self.titleTextField.text
             event.descrition = self.descriptionTextField.text
-            event.date = self.date
+            if let Date = self.date {
+                event.date = self.date!
+                event.planned = true
+            } else {
+                event.date = NSDate()
+                event.planned = false
+            }
             event.priority = self.priorityMetr.selectedSegmentIndex
             event.color = self.color
             NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
@@ -112,9 +129,7 @@ extension EventViewController: ColorPickerViewControllerDelegate {
 extension EventViewController: DatePickerViewControllerDelegate {
     
     func changeDate(date: NSDate) {
-        var formatter = NSDateFormatter()
-        formatter.setLocalizedDateFormatFromTemplate("EEE, MMM d, ''yy")
-        self.date = formatter.stringFromDate(date)
-        dateButton.setTitle(self.date, forState: UIControlState.Normal)
+        self.date = date
+        dateButton.setTitle(self.formatter.stringFromDate(self.date!), forState: UIControlState.Normal)
     }
 }

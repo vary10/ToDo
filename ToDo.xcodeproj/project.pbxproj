@@ -18,7 +18,7 @@
 		D81D6EDF1A49ECEF0011F55B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81D6EDE1A49ECEF0011F55B /* RootViewController.swift */; };
 		D82307761A51D73C00262A13 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82307751A51D73C00262A13 /* DatePickerViewController.swift */; };
 		D82307781A51F07500262A13 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82307771A51F07500262A13 /* TableViewCell.swift */; };
-		D860608F1A6FEFAE00786AEA /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = D860608E1A6FEFAE00786AEA /* Event.m */; };
+		D86060921A70552900786AEA /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = D86060911A70552900786AEA /* Event.m */; };
 		D87C977E1A4B1047003737E2 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87C977D1A4B1047003737E2 /* ColorPickerViewController.swift */; };
 		D87C97811A4B217C003737E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87C977F1A4B217C003737E2 /* Main.storyboard */; };
 		D87C97831A4B4AD8003737E2 /* colors.png in Resources */ = {isa = PBXBuildFile; fileRef = D87C97821A4B4AD8003737E2 /* colors.png */; };
@@ -53,8 +53,8 @@
 		D81D6EDE1A49ECEF0011F55B /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		D82307751A51D73C00262A13 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		D82307771A51F07500262A13 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		D860608D1A6FEFAE00786AEA /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		D860608E1A6FEFAE00786AEA /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		D86060901A70552900786AEA /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		D86060911A70552900786AEA /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		D87C977D1A4B1047003737E2 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		D87C97801A4B217C003737E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D87C97821A4B4AD8003737E2 /* colors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colors.png; sourceTree = "<group>"; };
@@ -166,8 +166,8 @@
 		D8AB216C1A4A20E8006B4FD1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D860608D1A6FEFAE00786AEA /* Event.h */,
-				D860608E1A6FEFAE00786AEA /* Event.m */,
+				D86060901A70552900786AEA /* Event.h */,
+				D86060911A70552900786AEA /* Event.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -311,7 +311,7 @@
 				D81D6EDF1A49ECEF0011F55B /* RootViewController.swift in Sources */,
 				D81D6EBC1A49E77C0011F55B /* EventViewController.swift in Sources */,
 				D82307781A51F07500262A13 /* TableViewCell.swift in Sources */,
-				D860608F1A6FEFAE00786AEA /* Event.m in Sources */,
+				D86060921A70552900786AEA /* Event.m in Sources */,
 				D87C977E1A4B1047003737E2 /* ColorPickerViewController.swift in Sources */,
 				D82307761A51D73C00262A13 /* DatePickerViewController.swift in Sources */,
 				D81D6EDD1A49EA340011F55B /* NavigationController.swift in Sources */,

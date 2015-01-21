@@ -11,6 +11,8 @@ import CoreData
 
 
 class RootViewController: UIViewController {
+    let formatter = NSDateFormatter()
+    
     var events: [Event] = []
     
     var colors: [String: UIColor] = ["Blue": UIColor(red: 87.0/255, green: 228.0/255, blue: 255.0/255, alpha: 1.0), "Green": UIColor(red: 60.0/255, green: 232.0/255, blue: 116.0/255, alpha: 1.0), "Yellow": UIColor(red: 240.0/255, green: 250.0/255, blue: 70.0/255, alpha: 1.0), "Orange": UIColor(red: 243.0/255, green: 150.0/255, blue: 52.0/255, alpha: 1.0), "Red": UIColor(red: 250.0/255, green: 102.0/255, blue: 70.0/255, alpha: 1.0), "Purple": UIColor(red: 166.0/255, green: 90.0/255, blue: 242.0/255, alpha: 1.0)]
@@ -18,6 +20,7 @@ class RootViewController: UIViewController {
     @IBOutlet weak var eventTable: UITableView!
 
     override func viewWillAppear(animated: Bool) {
+        self.formatter.setLocalizedDateFormatFromTemplate("MMM d, ''yy")
         events = Event.MR_findAll() as [Event]
     }
     
@@ -47,7 +50,9 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = eventTable.dequeueReusableCellWithIdentifier("eventTableCell", forIndexPath: indexPath) as TableViewCell
         let tmp = events[indexPath.row]
-        cell.title.text = "\(tmp.title) at \(tmp.date)"
+        var between = tmp.planned == true ? "on" : "from"
+        cell.title.text = "\(tmp.title)"
+        cell.date.text = "\(between) \(self.formatter.stringFromDate(tmp.date))"
         cell.colorView.backgroundColor = colors[tmp.color]
         return cell
     }

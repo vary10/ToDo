@@ -10,6 +10,9 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var date: UILabel!
+    
     @IBOutlet weak var colorView: UIView!
     @IBOutlet weak var title: UILabel!
 }
