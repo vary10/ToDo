@@ -20,10 +20,10 @@
 		D82307781A51F07500262A13 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82307771A51F07500262A13 /* TableViewCell.swift */; };
 		D86060921A70552900786AEA /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = D86060911A70552900786AEA /* Event.m */; };
 		D86060941A71916C00786AEA /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86060931A71916C00786AEA /* DesignableView.swift */; };
-		D86060981A71A5BA00786AEA /* b.png in Resources */ = {isa = PBXBuildFile; fileRef = D86060971A71A5BA00786AEA /* b.png */; };
 		D87C977E1A4B1047003737E2 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87C977D1A4B1047003737E2 /* ColorPickerViewController.swift */; };
 		D87C97811A4B217C003737E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87C977F1A4B217C003737E2 /* Main.storyboard */; };
 		D87C97831A4B4AD8003737E2 /* colors.png in Resources */ = {isa = PBXBuildFile; fileRef = D87C97821A4B4AD8003737E2 /* colors.png */; };
+		D8DF40181A71BD32003739CB /* bin.png in Resources */ = {isa = PBXBuildFile; fileRef = D8DF40171A71BD32003739CB /* bin.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,10 +59,10 @@
 		D86060911A70552900786AEA /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		D86060931A71916C00786AEA /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		D86060961A71933700786AEA /* IBDesignable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBDesignable.h; path = ../IBDesignable.h; sourceTree = "<group>"; };
-		D86060971A71A5BA00786AEA /* b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b.png; sourceTree = "<group>"; };
 		D87C977D1A4B1047003737E2 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		D87C97801A4B217C003737E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D87C97821A4B4AD8003737E2 /* colors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colors.png; sourceTree = "<group>"; };
+		D8DF40171A71BD32003739CB /* bin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bin.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,8 +145,8 @@
 		D81D6EB41A49E77C0011F55B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D86060971A71A5BA00786AEA /* b.png */,
 				D86060961A71933700786AEA /* IBDesignable.h */,
+				D8DF40171A71BD32003739CB /* bin.png */,
 				D81D6EB51A49E77C0011F55B /* Info.plist */,
 				D87C97821A4B4AD8003737E2 /* colors.png */,
 				D81D6ED91A49E8DE0011F55B /* ToDo-Bridging-Header.h */,
@@ -263,10 +263,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D87C97811A4B217C003737E2 /* Main.storyboard in Resources */,
-				D86060981A71A5BA00786AEA /* b.png in Resources */,
 				D81D6EC41A49E77C0011F55B /* LaunchScreen.xib in Resources */,
 				D81D6EC11A49E77C0011F55B /* Images.xcassets in Resources */,
 				D87C97831A4B4AD8003737E2 /* colors.png in Resources */,
+				D8DF40181A71BD32003739CB /* bin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
